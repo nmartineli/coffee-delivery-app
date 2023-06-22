@@ -6,14 +6,16 @@ export const GlobalStyle = createGlobalStyle`
   margin: 0;
   padding: 0;  
   box-sizing: border-box;
- }
+}
 
- :focus {
+:focus {
   outline: 0;
- }
+}
 
 body {
- background: ${(props) => props.theme['base-background']};
+  background: ${(props) => props.theme['base-background']};
+  max-width: 70rem;
+  margin: 0 auto;
  -webkit-font-smoothing: antialiased;
 }
 

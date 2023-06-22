@@ -10,7 +10,7 @@ export const defaultTheme = {
 	'base-white': '#FFFFFF',
 
 	'brand-yellow-light': '#F1E9C9',
-	'brand-yellow': '##DBAC2C',
+	'brand-yellow': '#DBAC2C',
 	'brand-yellow-dark': '#C47F17',
 
 	'brand-purple-light': '#EBE5F9',
