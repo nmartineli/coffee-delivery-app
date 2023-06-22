@@ -1,3 +1,10 @@
+import { Banner } from './components/Banner';
+
 export function Home() {
-	return <h1>Home</h1>;
+	return (
+		<>
+			<Banner />
+			<h2>Nossos cafés</h2>
+		</>
+	);
 }
