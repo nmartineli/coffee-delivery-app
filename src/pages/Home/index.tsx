@@ -1,16 +1,18 @@
 import { Banner } from './components/Banner';
 import { ProductCard } from './components/ProductCard';
-import { HomeContentContainer } from './styles';
+import { HomeContentContainer, HomeContentTitle } from './styles';
 
-export function Home() {
+export function Home({ className }) {
 	return (
 		<>
 			<Banner />
+			<HomeContentTitle>Nossos cafés</HomeContentTitle>
 			<HomeContentContainer>
-				<h2>Nossos cafés</h2>
-				<div>
-					<ProductCard />
-				</div>
+				<ProductCard />
+				<ProductCard />
+				<ProductCard />
+				<ProductCard />
+				<ProductCard />
 			</HomeContentContainer>
 		</>
 	);

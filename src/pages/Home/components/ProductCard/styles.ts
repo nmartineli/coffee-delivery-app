@@ -17,7 +17,6 @@ export const ProductCardContainer = styled.div`
 	h3 {
 		font-family: 'Baloo 2', sans-serif;
 		font-size: 1.25rem;
-		line-height: 130%;
 		font-weight: 700;
 		color: ${(props) => props.theme['base-subtitle']};
 		margin-top: 1rem;
@@ -30,13 +29,45 @@ export const ProductCardContainer = styled.div`
 		margin-top: 0.5rem;
 		margin-bottom: 2rem;
 	}
+
+	div {
+		display: flex;
+		align-items: center;
+	}
+
+	div > h5 {
+		font-family: 'Baloo 2', sans-serif;
+		font-weight: 800;
+		font-size: 1.5rem;
+	}
+
+	h6 {
+		margin-top: 5px;
+		margin-right: 3px;
+		font-size: 0.9rem;
+	}
+
+	form {
+		display: flex;
+		gap: 0.5rem;
+		margin-left: 1.5rem;
+	}
 `;
 
-export const ProductTag = styled.h6`
+export const AddToCartButton = styled.button`
+	display: flex;
+	align-items: center;
+	border: none;
+	padding: 8px;
+	background: ${(props) => props.theme['brand-purple-dark']};
+	color: ${(props) => props.theme['base-white']};
+`;
+
+export const ProductTag = styled.h4`
 	font-size: 0.7rem;
 	font-weight: 700;
-	line-height: 130%;
 	color: ${(props) => props.theme['brand-yellow-dark']};
 	background-color: ${(props) => props.theme['brand-yellow-light']};
 	padding: 4px 8px;
+	border-radius: 100px;
 `;

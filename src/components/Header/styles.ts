@@ -21,7 +21,6 @@ export const HeaderContainer = styled.header`
 			background: ${(props) => props.theme['brand-purple-light']};
 			color: ${(props) => props.theme['brand-purple-dark']};
 			border: 0;
-			border-radius: 6px;
 			font-size: 14px;
 		}
 

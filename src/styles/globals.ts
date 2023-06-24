@@ -16,12 +16,17 @@ body {
   background: ${(props) => props.theme['base-background']};
   margin: 0 auto;
  -webkit-font-smoothing: antialiased;
-}
-
-body, button {
-  font-family: 'Roboto', sans-serif;
+ font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 1rem;
+  line-height: 130%;
+  color: ${(props) => props.theme['base-text']};
+}
+
+
+input, button {
+  border-radius: 6px;
+
 }
 
 `;
