@@ -1,5 +1,5 @@
 import { Trash } from '@phosphor-icons/react';
-import { QuantityInput } from '../../../components/QuantityInput';
+import { QuantityInput } from '../../../../components/QuantityInput';
 import { CheckoutProductCardContainer } from './styles';
 
 export function CheckoutProductCard() {

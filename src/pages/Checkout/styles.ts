@@ -5,31 +5,60 @@ export const CheckoutContainer = styled.div`
 	margin: 0 auto;
 `;
 
-export const CompleteOrderContainer = styled.div`
-	div {
-		background-color: ${(props) => props.theme['base-card']};
-		border-radius: 6px;
+export const CheckoutContent = styled.div`
+	display: flex;
+	justify-content: space-between;
+
+	h2 {
+		color: ${(props) => props.theme['base-subtitle']};
+		font-size: 1.1rem;
+		font-family: 'Baloo 2', sans-serif;
+		font-weight: 700;
+		margin: 2.5rem 0 1rem 0;
 	}
+`;
+
+export type checkoutIconVariants = 'yellowDark' | 'purple';
+
+interface checkoutIconVariantsProps {
+	variant: checkoutIconVariants;
+}
+
+const checkoutIconVariants = {
+	yellowDark: '#C47F17',
+	purple: '#8047F8',
+};
+
+export const CheckoutIcons = styled.span<checkoutIconVariantsProps>`
+	background: transparent;
+
+	${(props) => {
+		return `
+				color: ${checkoutIconVariants[props.variant]};
+			`;
+	}}
+`;
+
+export const ContainerText = styled.div`
+	display: flex;
+	gap: 0.7rem;
 
 	h3 {
+		color: ${(props) => props.theme['base-subtitle']};
+		font-size: 1rem;
+		font-weight: 400;
 	}
 
 	p {
-	}
-
-	input {
+		color: ${(props) => props.theme['base-text']};
+		font-size: 0.875rem;
 	}
 `;
 
-export const CheckoutIcons = styled.span`
-	background: transparent;
+export const FormContainer = styled.div`
+	width: 40rem;
 `;
 
-export const CheckoutCart = styled.div`
-	div {
-		background: ${(props) => props.theme['base-card']};
-		border-radius: 6px 36px 6px 36px;
-	}
-	button {
-	}
+export const CartContainer = styled.div`
+	width: 28rem;
 `;

@@ -3,6 +3,7 @@ export const defaultTheme = {
 	'base-button': '#E6E5E5',
 	'base-card': '#F3F2F2',
 	'base-input': '#EDEDED',
+	'base-hover': '#D7D5D5',
 	'base-label': '#8D8686',
 	'base-subtitle': '#403937',
 	'base-text': '#574F4D',
