@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const CheckoutContainer = styled.div`
 	max-width: 70rem;
-	margin: 0 auto;
+	margin: 2.5rem auto 3rem auto;
 `;
 
 export const CheckoutContent = styled.div`
@@ -14,7 +14,7 @@ export const CheckoutContent = styled.div`
 		font-size: 1.1rem;
 		font-family: 'Baloo 2', sans-serif;
 		font-weight: 700;
-		margin: 2.5rem 0 1rem 0;
+		margin-bottom: 1rem;
 	}
 `;
 

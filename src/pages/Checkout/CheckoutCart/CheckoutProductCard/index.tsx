@@ -1,26 +1,28 @@
 import { Trash } from '@phosphor-icons/react';
 import { QuantityInput } from '../../../../components/QuantityInput';
-import { CheckoutProductCardContainer } from './styles';
+import { ButtonsContainer, CheckoutProductCardContainer, CheckoutProductContent, PriceContainer, RemoveButton } from './styles';
+import image from '../../../../assets/coffee-types/01-espresso-tradicional.svg';
 
 export function CheckoutProductCard() {
 	return (
 		<CheckoutProductCardContainer>
-			<span>
-				<img src="" alt="" />
-			</span>
-			<div>
-				<h6>Expresso Tradicional</h6>
-				<p>R$ 9,90</p>
-			</div>
-			<div>
-				<QuantityInput />
-				<button>
-					<span>
-						<Trash />
-					</span>
-					<p>Remover</p>
-				</button>
-			</div>
+			<img src={image} alt="" />
+
+			<CheckoutProductContent>
+				<PriceContainer>
+					<h6>Expresso Tradicional</h6>
+					<p>R$ 9,90</p>
+				</PriceContainer>
+				<ButtonsContainer>
+					<QuantityInput />
+					<RemoveButton>
+						<span>
+							<Trash size={16} />
+						</span>
+						REMOVER
+					</RemoveButton>
+				</ButtonsContainer>
+			</CheckoutProductContent>
 		</CheckoutProductCardContainer>
 	);
 }
