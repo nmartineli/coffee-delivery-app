@@ -1,7 +1,8 @@
 import { ProductCardContainer, ProductTag, AddToCartButton } from './styles';
 import { ShoppingCart } from '@phosphor-icons/react';
 import { QuantityInput } from '../../../../components/QuantityInput';
-import { IDrink } from '../..';
+import { IDrink } from '../../../../hooks/useFetchProducts';
+import { formatCashValue } from '../../../../utils/formatCash';
 
 interface ProductCardProps {
 	drink: IDrink;
@@ -9,6 +10,8 @@ interface ProductCardProps {
 
 export function ProductCard(props: ProductCardProps) {
 	const { drink } = props;
+	const drinkPrice = formatCashValue(Number(drink.price));
+
 	return (
 		<ProductCardContainer>
 			<span>
@@ -20,8 +23,7 @@ export function ProductCard(props: ProductCardProps) {
 			<h3>{drink.title}</h3>
 			<p>{drink.description}</p>
 			<div>
-				<h6>R$</h6>
-				<h5>{drink.price}</h5>
+				<h5>{drinkPrice}</h5>
 				<form action="">
 					<QuantityInput />
 					<AddToCartButton>
