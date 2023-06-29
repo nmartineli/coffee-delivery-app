@@ -1,0 +1,114 @@
+[
+	{
+		"id": "1",
+		"title": "Expresso Tradicional",
+		"description": "O tradicional café feito com água quente e grãos moídos",
+		"tags": ["tradicional"],
+		"price": "9.9",
+		"image": "01-espresso-tradicional.svg"
+	},
+	{
+		"id": "2",
+		"title": "Expresso Americano",
+		"description": "Expresso diluído, menos intenso que o tradicional",
+		"tags": ["tradicional"],
+		"price": "9.9",
+		"image": "02-espresso-americano.svg"
+	},
+	{
+		"id": "3",
+		"title": "Expresso Cremoso",
+		"description": "Café expresso tradicional com espuma cremosa",
+		"tags": ["tradicional"],
+		"price": "9.9",
+		"image": "03-espresso-cremoso.svg"
+	},
+	{
+		"id": "4",
+		"title": "Expresso Gelado",
+		"description": "Bebida preparada com café expresso e cubos de gelo",
+		"tags": ["tradicional", "gelado"],
+		"price": "9.9",
+		"image": "04-espresso-gelado.svg"
+	},
+	{
+		"id": "5",
+		"title": "Café com Leite",
+		"description": "Meio a meio de expresso tradicional com leite vaporizado",
+		"tags": ["tradicional", "com leite"],
+		"price": "9.9",
+		"image": "05-cafe-leite.svg"
+	},
+	{
+		"id": "6",
+		"title": "Latte",
+		"description": "Uma dose de café expresso com o dobro de leite e espuma cremosa",
+		"tags": ["tradicional", "com leite"],
+		"price": "9.9",
+		"image": "06-latte.svg"
+	},
+	{
+		"id": "7",
+		"title": "Capuccino",
+		"description": "Bebida com canela feita de doses iguais de café, leite e espuma",
+		"tags": ["tradicional", "com leite"],
+		"price": "9.9",
+		"image": "07-capuccino.svg"
+	},
+	{
+		"id": "8",
+		"title": "Macchiato",
+		"description": "Café expresso misturado com um pouco de leite quente e espuma",
+		"tags": ["tradicional", "com leite"],
+		"price": "9.9",
+		"image": "08-macchiato.svg"
+	},
+	{
+		"id": "9",
+		"title": "Mocaccino",
+		"description": "Café expresso com calda de chocolate, pouco leite e espuma",
+		"tags": ["tradicional", "com leite"],
+		"price": "9.9",
+		"image": "09-mocaccino.svg"
+	},
+	{
+		"id": "10",
+		"title": "Chocolate Quente",
+		"description": "Bebida feita com chocolate dissolvido no leite quente e café",
+		"tags": ["especial", "com leite"],
+		"price": "9.9",
+		"image": "10-chocolate-quente.svg"
+	},
+	{
+		"id": "11",
+		"title": "Cubano",
+		"description": "Drink gelado de café expresso com rum, creme de leite e hortelã",
+		"tags": ["especial", "alcoólico", "gelado"],
+		"price": "9.9",
+		"image": "11-cubano.svg"
+	},
+	{
+		"id": "12",
+		"title": "Havaiano",
+		"description": "Bebida adocicada preparada com café e leite de coco",
+		"tags": ["especial"],
+		"price": "9.9",
+		"image": "12-havaiano.svg"
+	},
+	{
+		"id": "13",
+		"title": "Arabe",
+		"description": "Bebida preparada com grãos de café árabe e especiarias",
+		"tags": ["especial"],
+		"price": "9.9",
+		"image": "13-arabe.svg"
+	},
+	{
+		"id": "14",
+		"title": "Irlandês",
+		"description": "Bebida a base de café, uísque irlandês, açúcar e chantilly",
+		"tags": ["especial", "alcoólico"],
+		"price": "9.9",
+		"image": "14-irlandes.svg"
+	}
+]

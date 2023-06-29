@@ -1,22 +1,27 @@
 import { ProductCardContainer, ProductTag, AddToCartButton } from './styles';
-import coffeeImage from '../../../../assets/coffee-types/01-espresso-tradicional.svg';
 import { ShoppingCart } from '@phosphor-icons/react';
 import { QuantityInput } from '../../../../components/QuantityInput';
+import { IDrink } from '../..';
 
-export function ProductCard() {
+interface ProductCardProps {
+	drink: IDrink;
+}
+
+export function ProductCard(props: ProductCardProps) {
+	const { drink } = props;
 	return (
 		<ProductCardContainer>
 			<span>
-				<img src={coffeeImage} alt="" />
+				<img src={`./coffee-images/${drink.image}`} alt="" />{' '}
 			</span>
 			<div>
 				<ProductTag>Tradicional</ProductTag>
 			</div>
-			<h3>Expresso Tradicional</h3>
-			<p>O tradicional café feito com água quente e grãos moídos</p>
+			<h3>{drink.title}</h3>
+			<p>{drink.description}</p>
 			<div>
 				<h6>R$</h6>
-				<h5>9,90</h5>
+				<h5>{drink.price}</h5>
 				<form action="">
 					<QuantityInput />
 					<AddToCartButton>

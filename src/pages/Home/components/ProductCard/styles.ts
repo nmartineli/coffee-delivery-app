@@ -2,12 +2,14 @@ import styled from 'styled-components';
 
 export const ProductCardContainer = styled.div`
 	width: 16rem;
-	height: 20rem;
+	height: 20.5rem;
 	display: flex;
 	flex-direction: column;
 	background-color: ${(props) => props.theme['base-card']};
 	border-radius: 6px 36px 6px 36px;
 	align-items: center;
+	margin-bottom: 1rem;
+	padding: 0 1rem;
 
 	span {
 		margin-top: -1.5rem;
@@ -42,8 +44,7 @@ export const ProductCardContainer = styled.div`
 	}
 
 	h6 {
-		margin-top: 5px;
-		margin-right: 3px;
+		margin-right: 4px;
 		font-size: 0.9rem;
 	}
 
