@@ -1,17 +1,35 @@
+import { useState, useContext } from 'react';
 import { ProductCardContainer, ProductTag, AddToCartButton } from './styles';
 import { ShoppingCart } from '@phosphor-icons/react';
 import { QuantityInput } from '../../../../components/QuantityInput';
 import { IDrink } from '../../../../hooks/useFetchProducts';
 import { formatCashValue } from '../../../../utils/formatCash';
+import { CartContext } from '../../../../contexts/CartContext';
 
 interface ProductCardProps {
 	drink: IDrink;
 }
 
 export function ProductCard(props: ProductCardProps) {
+	const { cart, addProductToCart } = useContext(CartContext);
+
+	const [number, setNumber] = useState<number>(1);
+
 	const { drink } = props;
 	const drinkPrice = formatCashValue(Number(drink.price));
 
+	const cartProduct = {
+		...drink,
+		quantity: number,
+	};
+
+	const handleAddToCart = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		console.log(cartProduct);
+		addProductToCart(cartProduct);
+	};
+
+	console.log(cart);
 	return (
 		<ProductCardContainer>
 			<span>
@@ -24,8 +42,8 @@ export function ProductCard(props: ProductCardProps) {
 			<p>{drink.description}</p>
 			<div>
 				<h5>{drinkPrice}</h5>
-				<form action="">
-					<QuantityInput />
+				<form onSubmit={() => handleAddToCart(event)}>
+					<QuantityInput number={number} setNumber={setNumber} />
 					<AddToCartButton>
 						<ShoppingCart size={22} weight="fill" />
 					</AddToCartButton>

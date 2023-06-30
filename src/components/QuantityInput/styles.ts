@@ -29,6 +29,7 @@ export const QuantityInputComponent = styled.div`
 		text-align: center;
 		font-size: 1rem;
 		width: 1.5rem;
+		color: ${(props) => props.theme['base-title']};
 	}
 
 	::-webkit-input-placeholder {
