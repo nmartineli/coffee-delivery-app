@@ -32,6 +32,23 @@ export const HeaderContainer = styled.header`
 			color: ${(props) => props.theme['brand-yellow-dark']};
 			border: 0;
 			border-radius: 6px;
+			position: relative;
 		}
 	}
+`;
+
+export const CartNotification = styled.div`
+	height: 1.25rem;
+	width: 1.25rem;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: ${(props) => props.theme['brand-yellow-dark']};
+	color: ${(props) => props.theme['base-white']};
+	font-weight: 700;
+	font-size: 0.8rem;
+	position: absolute;
+	bottom: 26px;
+	right: -8px;
 `;

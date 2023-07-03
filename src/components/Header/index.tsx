@@ -1,8 +1,14 @@
-import { HeaderContainer } from './styles';
+import { useContext } from 'react';
+import { HeaderContainer, CartNotification } from './styles';
 import { MapPin, ShoppingCart } from '@phosphor-icons/react';
 import logo from '../../assets/logo-coffee-delivery.svg';
+import { CartContext } from '../../contexts/CartContext';
 
 export function Header() {
+	const { cart } = useContext(CartContext);
+
+	const cartQuantity = cart.length;
+
 	return (
 		<HeaderContainer>
 			<span>
@@ -14,6 +20,7 @@ export function Header() {
 				</button>
 				<a>
 					<ShoppingCart size={22} weight="fill" />
+					{cartQuantity >= 1 ? <CartNotification>1</CartNotification> : null}
 				</a>
 			</nav>
 		</HeaderContainer>
