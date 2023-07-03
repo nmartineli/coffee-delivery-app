@@ -7,28 +7,23 @@ interface QuantityInputProps {
 }
 
 export function QuantityInput({ number, setNumber }: QuantityInputProps) {
-	const incrementNumber = (e: React.MouseEvent<HTMLElement>) => {
-		e.preventDefault();
-		const quantity = number++;
-		setNumber(quantity);
+	const incrementNumber = () => {
+		setNumber(number + 1);
 	};
 
-	const decrementNumber = (e: React.MouseEvent<HTMLElement>) => {
-		e.preventDefault();
-
+	const decrementNumber = () => {
 		if (number > 1) {
-			const quantity = number--;
-			setNumber(quantity);
+			setNumber(number - 1);
 		}
 	};
 
 	return (
 		<QuantityInputComponent>
-			<button onClick={decrementNumber}>
+			<button type="button" onClick={decrementNumber}>
 				<Minus size={14} />
 			</button>
 			<input type="number" id="productQuantity" value={number} readOnly />
-			<button onClick={incrementNumber}>
+			<button type="button" onClick={incrementNumber}>
 				<Plus size={14} />
 			</button>
 		</QuantityInputComponent>

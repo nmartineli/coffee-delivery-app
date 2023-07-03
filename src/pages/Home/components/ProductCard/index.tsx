@@ -10,26 +10,38 @@ interface ProductCardProps {
 	drink: IDrink;
 }
 
-export function ProductCard(props: ProductCardProps) {
-	const { cart, addProductToCart } = useContext(CartContext);
+interface CartProductProps extends IDrink {
+	quantity: number;
+}
 
-	const [number, setNumber] = useState<number>(1);
+export function ProductCard(props: ProductCardProps) {
+	const { cart, addProductToCart, updateProductQuantity } = useContext(CartContext);
+
+	const [number, setNumber] = useState(() => 1);
 
 	const { drink } = props;
 	const drinkPrice = formatCashValue(Number(drink.price));
 
-	const cartProduct = {
+	const productAddedToCart = {
 		...drink,
 		quantity: number,
 	};
 
-	const handleAddToCart = (event: React.FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		console.log(cartProduct);
-		addProductToCart(cartProduct);
+	const findProductIndexInCart = (productBeingAdded: CartProductProps) => {
+		return cart.findIndex((product) => product.id === productBeingAdded.id);
 	};
 
-	console.log(cart);
+	const handleAddToCart = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		const productCartIndex = findProductIndexInCart(productAddedToCart);
+		if (productCartIndex >= 0) {
+			updateProductQuantity(productAddedToCart, productCartIndex);
+			return;
+		}
+
+		addProductToCart(productAddedToCart);
+	};
+
 	return (
 		<ProductCardContainer>
 			<span>

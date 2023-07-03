@@ -1,10 +1,11 @@
 import { createContext, ReactNode, useReducer } from 'react';
 import { CartProduct, cartReducer } from '../reducers/cart/reducers';
-import { addToCart } from '../reducers/cart/actions';
+import { addToCart, updateCart } from '../reducers/cart/actions';
 
 interface CartContextType {
 	cart: CartProduct[];
 	addProductToCart: (cartProduct: CartProduct) => void;
+	updateProductQuantity: (cartProduct: CartProduct, productCartIndex: number) => void;
 }
 
 export const CartContext = createContext({} as CartContextType);
@@ -20,9 +21,12 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
 	const { cart } = cartState;
 
-	function addProductToCart(cartProduct: CartProduct) {
-		dispatch(addToCart(cartProduct));
-		console.log(cart);
+	function addProductToCart(productAddedToCart: CartProduct) {
+		dispatch(addToCart(productAddedToCart));
+	}
+
+	function updateProductQuantity(productAddedToCart: CartProduct, productCartIndex: number) {
+		dispatch(updateCart(productAddedToCart, productCartIndex));
 	}
 
 	return (
@@ -30,6 +34,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 			value={{
 				cart,
 				addProductToCart,
+				updateProductQuantity,
 			}}
 		>
 			{children}
