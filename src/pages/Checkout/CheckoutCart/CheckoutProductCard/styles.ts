@@ -5,7 +5,7 @@ export const CheckoutProductCardContainer = styled.div`
 	gap: 1.25rem;
 	border-bottom: 1px solid ${(props) => props.theme['base-button']};
 	padding-bottom: 1.5rem;
-
+	margin-bottom: 1.5rem;
 	img {
 		width: 4rem;
 	}
@@ -41,15 +41,20 @@ export const ButtonsContainer = styled.div`
 	align-items: center;
 	gap: 0.5rem;
 	margin-top: 0.5rem;
+
+	form {
+		display: flex;
+		gap: 0.5rem;
+	}
 `;
 
-export const RemoveButton = styled.button`
+export const ProductCartButton = styled.button`
 	display: flex;
 	align-items: center;
 	border: none;
 	background-color: ${(props) => props.theme['base-button']};
 	color: ${(props) => props.theme['base-text']};
-	padding: 9px;
+	padding: 8px;
 	font-size: 0.7rem;
 	gap: 4px;
 
@@ -63,4 +68,13 @@ export const RemoveButton = styled.button`
 		background-color: ${(props) => props.theme['base-hover']};
 		cursor: pointer;
 	}
+`;
+
+export const AddToCartButton = styled.button`
+	display: flex;
+	align-items: center;
+	border: none;
+	padding: 8px;
+	background: ${(props) => props.theme['brand-purple']};
+	color: ${(props) => props.theme['base-white']};
 `;

@@ -10,12 +10,8 @@ interface ProductCardProps {
 	drink: IDrink;
 }
 
-interface CartProductProps extends IDrink {
-	quantity: number;
-}
-
 export function ProductCard(props: ProductCardProps) {
-	const { cart, addProductToCart, updateProductQuantity } = useContext(CartContext);
+	const { handleAddToCart } = useContext(CartContext);
 
 	const [number, setNumber] = useState(() => 1);
 
@@ -25,21 +21,7 @@ export function ProductCard(props: ProductCardProps) {
 	const productAddedToCart = {
 		...drink,
 		quantity: number,
-	};
-
-	const findProductIndexInCart = (productBeingAdded: CartProductProps) => {
-		return cart.findIndex((product) => product.id === productBeingAdded.id);
-	};
-
-	const handleAddToCart = (event: React.FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		const productCartIndex = findProductIndexInCart(productAddedToCart);
-		if (productCartIndex >= 0) {
-			updateProductQuantity(productAddedToCart, productCartIndex);
-			return;
-		}
-
-		addProductToCart(productAddedToCart);
+		totalPrice: number * Number(drink.price),
 	};
 
 	return (
@@ -54,7 +36,7 @@ export function ProductCard(props: ProductCardProps) {
 			<p>{drink.description}</p>
 			<div>
 				<h5>{drinkPrice}</h5>
-				<form onSubmit={() => handleAddToCart(event)}>
+				<form onSubmit={() => handleAddToCart(event, productAddedToCart)}>
 					<QuantityInput number={number} setNumber={setNumber} />
 					<AddToCartButton>
 						<ShoppingCart size={22} weight="fill" />

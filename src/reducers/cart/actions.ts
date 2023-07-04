@@ -3,6 +3,7 @@ import { CartProduct } from './reducers';
 export enum ActionTypes {
 	ADD_TO_CART = 'ADD_TO_CART',
 	UPDATE_CART = 'UPDATE_CART',
+	REMOVE_FROM_CART = 'REMOVE_FROM_CART',
 }
 
 export function addToCart(product: CartProduct) {
@@ -20,6 +21,15 @@ export function updateCart(product: CartProduct, productCartIndex: number) {
 		payload: {
 			product,
 			productCartIndex,
+		},
+	};
+}
+
+export function removeFromCart(product: CartProduct) {
+	return {
+		type: ActionTypes.REMOVE_FROM_CART,
+		payload: {
+			product,
 		},
 	};
 }

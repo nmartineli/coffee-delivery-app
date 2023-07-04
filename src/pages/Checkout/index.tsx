@@ -2,23 +2,27 @@ import { CheckoutContainer, FormContainer, CartContainer, CheckoutContent } from
 import { UserAdress } from './UserAdress';
 import { PaymentMethod } from './PaymentMethod';
 import { CheckoutCart } from './CheckoutCart';
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/CartContext';
 
 export function Checkout() {
+	const { cart } = useContext(CartContext);
+
 	return (
 		<CheckoutContainer>
-			<form action="">
-				<CheckoutContent>
-					<FormContainer>
+			<CheckoutContent>
+				<FormContainer>
+					<form action="">
 						<h2>Complete seu pedido</h2>
 						<UserAdress />
 						<PaymentMethod />
-					</FormContainer>
-					<CartContainer>
-						<h2>Cafés selecionados</h2>
-						<CheckoutCart />
-					</CartContainer>
-				</CheckoutContent>
-			</form>
+					</form>
+				</FormContainer>
+				<CartContainer>
+					<h2>Cafés selecionados</h2>
+					<CheckoutCart />
+				</CartContainer>
+			</CheckoutContent>
 		</CheckoutContainer>
 	);
 }
