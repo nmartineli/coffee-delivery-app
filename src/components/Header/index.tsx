@@ -22,7 +22,7 @@ export function Header() {
 
 				<NavLink to="/checkout" title="checkout">
 					<ShoppingCart size={22} weight="fill" />
-					{cartQuantity >= 1 ? <CartNotification>1</CartNotification> : null}
+					{cartQuantity >= 1 ? <CartNotification>{cartQuantity}</CartNotification> : null}
 				</NavLink>
 			</nav>
 		</HeaderContainer>
