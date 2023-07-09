@@ -51,4 +51,17 @@ export const AdressForm = styled.div`
 		/* Microsoft Edge */
 		color: ${(props) => props.theme['base-label']};
 	}
+
+	input:read-only {
+		background-color: ${(props) => props.theme['base-hover']};
+		color: ${(props) => props.theme['base-label']};
+		border: 1px solid ${(props) => props.theme['base-hover']};
+	}
+
+	p {
+		font-size: 0.8rem;
+		color: ${(props) => props.theme['brand-purple']};
+		margin-bottom: 0.5rem;
+		margin-left: 0.5rem;
+	}
 `;
