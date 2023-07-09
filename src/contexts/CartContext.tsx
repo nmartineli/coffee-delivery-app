@@ -12,6 +12,7 @@ interface CartContextType {
 	updateProductQuantity: (cartProduct: CartProduct, productCartIndex: number) => void;
 	handleAddToCart: (event: React.FormEvent<HTMLFormElement>, productAddedToCart: CartProductProps) => void;
 	handleGetAddress: (cep: string) => void;
+	setPayment: (payment: string) => void;
 }
 
 export const CartContext = createContext({} as CartContextType);
@@ -55,6 +56,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 		siafi: '',
 		uf: '',
 	});
+	const [payment, setPayment] = useState('');
 
 	const { cart } = cartState;
 
@@ -113,6 +115,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 				handleGetAddress,
 				address,
 				addressError,
+				setPayment,
 			}}
 		>
 			{children}
