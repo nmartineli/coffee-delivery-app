@@ -1,5 +1,5 @@
 import { CheckoutContainer, FormContainer, CartContainer, CheckoutContent } from './styles';
-import { UserAdress } from './UserAdress';
+import { UserAddress } from './UserAddress';
 import { PaymentMethod } from './PaymentMethod';
 import { CheckoutCart } from './CheckoutCart';
 import { useContext } from 'react';
@@ -14,7 +14,7 @@ export function Checkout() {
 				<FormContainer>
 					<form action="">
 						<h2>Complete seu pedido</h2>
-						<UserAdress />
+						<UserAddress />
 						<PaymentMethod />
 					</form>
 				</FormContainer>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getAdress = async (cep: string) => {
+export const getAddress = async (cep: string) => {
 	const apiResponse = await axios
 		.get(`https://viacep.com.br/ws/${cep}/json`)
 		.then((response) => response.data)

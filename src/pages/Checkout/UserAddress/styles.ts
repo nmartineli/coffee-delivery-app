@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-export const UserAdressContainer = styled.div`
+export const UserAddressContainer = styled.div`
 	background-color: ${(props) => props.theme['base-card']};
 	border-radius: 6px;
 	padding: 2.5rem;
 `;
 
-export const AdressForm = styled.div`
+export const AddressForm = styled.div`
 	div {
 		display: flex;
 		gap: 0.8rem;
