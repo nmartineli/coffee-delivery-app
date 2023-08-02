@@ -10,8 +10,25 @@ interface CheckoutIcons {
 
 export function UserAddress() {
 	const [cep, setCep] = useState('');
+	const { handleGetAddress, addressAPI, addressError, setAddress } = useContext(CartContext);
+	const [numero, setNumero] = useState('');
+	const [complemento, setComplemento] = useState('');
 
-	const { handleGetAddress, address, addressError } = useContext(CartContext);
+	const handleOnChangeNumero = (value: string) => {
+		setNumero(value);
+	};
+
+	const handleOnChangeComplemento = (value: string) => {
+		setComplemento(value);
+	};
+
+	const handleOnBlurNumero = (numero: string, complemento: string) => {
+		setAddress({ ...addressAPI, numero, complemento });
+	};
+
+	const handleOnBlurComplemento = (numero: string, complemento: string) => {
+		setAddress({ ...addressAPI, numero, complemento });
+	};
 
 	return (
 		<UserAddressContainer>
@@ -36,16 +53,31 @@ export function UserAddress() {
 					onChange={(e) => setCep(e.target.value)}
 					onBlur={() => handleGetAddress(cep)}
 				/>
-				{addressError ? <p>CEP não encontrado</p> : null}
-				<input placeholder="Logradouro" type="text" name="logradouro" id="logradouro" value={address.logradouro} readOnly />
+				{addressError ? <p>Confira o endereço de entrega</p> : null}
+				<input placeholder="Logradouro" type="text" name="logradouro" id="logradouro" value={addressAPI.logradouro} readOnly />
 				<div>
-					<input placeholder="Número" name="numero" type="text" id="numero" required />
-					<input placeholder="Complemento" name="complemento" type="text" id="complemento" />
+					<input
+						placeholder="Número"
+						name="numero"
+						type="text"
+						id="numero"
+						required
+						onChange={(e) => handleOnChangeNumero(e.target.value)}
+						onBlur={() => handleOnBlurNumero(numero, complemento)}
+					/>
+					<input
+						placeholder="Complemento"
+						name="complemento"
+						type="text"
+						id="complemento"
+						onChange={(e) => handleOnChangeComplemento(e.target.value)}
+						onBlur={() => handleOnBlurComplemento(numero, complemento)}
+					/>
 				</div>
 				<div>
-					<input placeholder="Bairro" type="text" name="bairro" id="bairro" readOnly value={address.bairro} />
-					<input placeholder="Cidade" type="text" name="cidade" id="cidade" readOnly value={address.localidade} />
-					<input placeholder="UF" type="text" name="uf" id="uf" readOnly value={address.uf.toUpperCase()} />
+					<input placeholder="Bairro" type="text" name="bairro" id="bairro" readOnly value={addressAPI.bairro} />
+					<input placeholder="Cidade" type="text" name="cidade" id="cidade" readOnly value={addressAPI.localidade} />
+					<input placeholder="UF" type="text" name="uf" id="uf" readOnly value={addressAPI.uf.toUpperCase()} />
 				</div>
 			</AddressForm>
 		</UserAddressContainer>

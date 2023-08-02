@@ -2,12 +2,8 @@ import { CheckoutContainer, FormContainer, CartContainer, CheckoutContent } from
 import { UserAddress } from './UserAddress';
 import { PaymentMethod } from './PaymentMethod';
 import { CheckoutCart } from './CheckoutCart';
-import { useContext } from 'react';
-import { CartContext } from '../../contexts/CartContext';
 
 export function Checkout() {
-	const { cart } = useContext(CartContext);
-
 	return (
 		<CheckoutContainer>
 			<CheckoutContent>

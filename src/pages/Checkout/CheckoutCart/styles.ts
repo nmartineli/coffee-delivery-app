@@ -24,6 +24,14 @@ export const CheckoutTable = styled.div`
 		background-color: ${(props) => props.theme['brand-yellow-dark']};
 		cursor: pointer;
 	}
+
+	h6 {
+		font-size: 0.8rem;
+		color: ${(props) => props.theme['brand-purple']};
+		margin: 0.3rem 0;
+		font-weight: 400;
+	}
+
 	div {
 		display: flex;
 		justify-content: space-between;

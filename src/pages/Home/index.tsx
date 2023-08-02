@@ -8,7 +8,6 @@ import { CartContext } from '../../contexts/CartContext';
 export function Home() {
 	const drinksList = useFetchProducts();
 	const { cart } = useContext(CartContext);
-	console.log(cart);
 
 	return (
 		<>

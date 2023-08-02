@@ -3,16 +3,22 @@ import { CartProduct, cartReducer } from '../reducers/cart/reducers';
 import { addToCart, updateCart } from '../reducers/cart/actions';
 import { IDrink } from '../hooks/useFetchProducts';
 import { getAddress } from '../services/getCep';
+import { useNavigate } from 'react-router-dom';
 
 interface CartContextType {
 	cart: CartProduct[];
-	address: IAddress;
+	addressAPI: IAddressAPI;
 	addressError: boolean;
+	paymentError: boolean;
+	cartError: boolean;
+	order: IOrder | undefined;
 	addProductToCart: (cartProduct: CartProduct) => void;
 	updateProductQuantity: (cartProduct: CartProduct, productCartIndex: number) => void;
 	handleAddToCart: (event: React.FormEvent<HTMLFormElement>, productAddedToCart: CartProductProps) => void;
 	handleGetAddress: (cep: string) => void;
 	setPayment: (payment: string) => void;
+	setAddress: (address: IAddress) => void;
+	getOrder: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 export const CartContext = createContext({} as CartContextType);
@@ -26,10 +32,9 @@ export interface CartProductProps extends IDrink {
 	totalPrice: number;
 }
 
-interface IAddress {
+interface IAddressAPI {
 	bairro: string;
 	cep: string;
-	complemento: string;
 	ddd: string;
 	gia: string;
 	ibge: string;
@@ -39,11 +44,37 @@ interface IAddress {
 	uf: string;
 }
 
+interface IAddress extends IAddressAPI {
+	complemento: string;
+	numero: string;
+}
+
+export interface IOrder {
+	address: IAddress;
+	payment: string;
+	cart: CartProduct[];
+}
+
 export function CartContextProvider({ children }: CartContextProviderProps) {
+	const navigate = useNavigate();
 	const [cartState, dispatch] = useReducer(cartReducer, {
 		cart: [],
 	});
+	const [paymentError, setPaymentError] = useState(false);
+	const [cartError, setCartError] = useState(false);
 	const [addressError, setAddressError] = useState(false);
+	const [addressAPI, setAddressAPI] = useState<IAddressAPI>({
+		bairro: '',
+		cep: '',
+		ddd: '',
+		gia: '',
+		ibge: '',
+		localidade: '',
+		logradouro: '',
+		siafi: '',
+		uf: '',
+	});
+
 	const [address, setAddress] = useState<IAddress>({
 		bairro: '',
 		cep: '',
@@ -55,14 +86,11 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 		logradouro: '',
 		siafi: '',
 		uf: '',
+		numero: '',
 	});
-	const [payment, setPayment] = useState('');
 
-	const { cart } = cartState;
-
-	async function handleGetAddress(cep: string) {
-		setAddressError(false);
-		setAddress({
+	const [order, setOrder] = useState<IOrder>({
+		address: {
 			bairro: '',
 			cep: '',
 			complemento: '',
@@ -73,14 +101,35 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 			logradouro: '',
 			siafi: '',
 			uf: '',
+			numero: '',
+		},
+		cart: [],
+		payment: '',
+	});
+	const [payment, setPayment] = useState('');
+
+	const { cart } = cartState;
+
+	async function handleGetAddress(cep: string) {
+		setAddressError(false);
+		setAddressAPI({
+			bairro: '',
+			cep: '',
+			ddd: '',
+			gia: '',
+			ibge: '',
+			localidade: '',
+			logradouro: '',
+			siafi: '',
+			uf: '',
 		});
 
-		const address = await getAddress(cep);
-		if (address === undefined || address.erro) {
+		const addressReturn = await getAddress(cep);
+		if (addressReturn === undefined || addressReturn.erro) {
 			setAddressError(true);
 			return;
 		}
-		setAddress(address);
+		setAddressAPI(addressReturn);
 	}
 
 	function addProductToCart(productAddedToCart: CartProduct) {
@@ -105,6 +154,40 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 		addProductToCart(productAddedToCart);
 	};
 
+	const checkOrderForErrors = () => {
+		if (addressAPI.cep === '' || addressError) {
+			setAddressError(true);
+		}
+
+		if (cart.length === 0) {
+			setCartError(true);
+		}
+
+		if (!payment) {
+			setPaymentError(true);
+		}
+	};
+
+	const getOrder = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		checkOrderForErrors();
+
+		if (addressError || cartError || paymentError) {
+			console.log('Erros');
+			return;
+		} else {
+			const order = {
+				address,
+				cart,
+				payment,
+			};
+
+			setOrder(order);
+
+			navigate('/success');
+		}
+	};
+
 	return (
 		<CartContext.Provider
 			value={{
@@ -113,9 +196,14 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 				updateProductQuantity,
 				handleAddToCart,
 				handleGetAddress,
-				address,
+				setAddress,
+				addressAPI,
 				addressError,
 				setPayment,
+				paymentError,
+				getOrder,
+				cartError,
+				order,
 			}}
 		>
 			{children}

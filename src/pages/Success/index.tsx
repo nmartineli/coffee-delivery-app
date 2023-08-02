@@ -1,12 +1,16 @@
 import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react';
 import { OrderDetails, SuccessIcon, SuccessPageContainer, SuccessPageContent, iconVariants } from './styles';
 import image from '../../assets/delivery-image.svg';
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/CartContext';
 
 interface SuccessIcon {
 	variant: iconVariants;
 }
 
 export function Success() {
+	const { order } = useContext(CartContext);
+
 	return (
 		<SuccessPageContainer>
 			<h2>Uhu! Pedido confirmado</h2>
@@ -19,7 +23,10 @@ export function Success() {
 						</SuccessIcon>
 						<span>
 							<p>
-								Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+								Entrega em{' '}
+								<strong>
+									{order?.address.logradouro}, {order?.address.numero}
+								</strong>
 							</p>
 							<p>Farrapos - Porto Alegre, RS</p>
 						</span>
@@ -42,7 +49,7 @@ export function Success() {
 						<span>
 							<p>Pagamento na entrega</p>
 							<p>
-								<strong>Cartão de Crédito</strong>
+								<strong>{order?.payment}</strong>
 							</p>
 						</span>
 					</div>

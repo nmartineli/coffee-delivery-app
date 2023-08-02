@@ -5,7 +5,7 @@ import { CartContext } from '../../../contexts/CartContext';
 import { formatCashValue } from '../../../utils/formatCash';
 
 export function CheckoutCart() {
-	const { cart } = useContext(CartContext);
+	const { cart, paymentError, getOrder, cartError } = useContext(CartContext);
 
 	const deliveryFee = 3.5;
 	const orderTotalPrice = cart.reduce((sum, product) => {
@@ -32,7 +32,16 @@ export function CheckoutCart() {
 					<h3>Total</h3>
 					<h3>{formatCashValue(deliveryFee + orderTotalPrice)}</h3>
 				</div>
-				<button>Confirmar pedido</button>
+				<button
+					type="submit"
+					onClick={(e) => {
+						getOrder(e);
+					}}
+				>
+					Confirmar pedido
+				</button>
+				{cartError ? <h6>Não há produtos em seu carrinho!</h6> : null}
+				{paymentError ? <h6>Escolha uma forma de pagamento</h6> : null}
 			</CheckoutTable>
 		</CheckoutCartContainer>
 	);
