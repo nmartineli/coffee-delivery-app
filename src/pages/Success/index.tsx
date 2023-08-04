@@ -10,6 +10,12 @@ interface SuccessIcon {
 
 export function Success() {
 	const { order } = useContext(CartContext);
+	enum PaymentMethod {
+		CREDITO = 'Cartão de crédito',
+		DEBITO = 'Cartão de débito',
+		DINHEIRO = 'Dinheiro',
+	}
+	const payment = PaymentMethod[order.payment];
 
 	return (
 		<SuccessPageContainer>
@@ -49,7 +55,7 @@ export function Success() {
 						<span>
 							<p>Pagamento na entrega</p>
 							<p>
-								<strong>{order?.payment}</strong>
+								<strong>{payment}</strong>
 							</p>
 						</span>
 					</div>

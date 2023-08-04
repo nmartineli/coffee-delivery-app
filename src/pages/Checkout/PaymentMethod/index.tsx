@@ -25,7 +25,7 @@ export function PaymentMethod() {
 				</div>
 			</ContainerText>
 			<PaymentOptionsContainer>
-				<input type="radio" id="credito" name="payment" value="credito" onChange={handleChangePayment} />
+				<input type="radio" id="credito" name="payment" value="CREDITO" onChange={handleChangePayment} />
 				<label htmlFor="credito">
 					<span>
 						<CreditCard size={16} />
@@ -33,7 +33,7 @@ export function PaymentMethod() {
 					CARTÃO DE CRÉDITO
 				</label>
 
-				<input type="radio" id="debito" name="payment" value="debito" onChange={handleChangePayment} />
+				<input type="radio" id="debito" name="payment" value="DEBITO" onChange={handleChangePayment} />
 				<label htmlFor="debito">
 					<span>
 						<Bank size={16} />
@@ -41,7 +41,7 @@ export function PaymentMethod() {
 					CARTÃO DE DÉBITO
 				</label>
 
-				<input type="radio" id="dinheiro" name="payment" value="dinheiro" onChange={handleChangePayment} />
+				<input type="radio" id="dinheiro" name="payment" value="DINHEIRO" onChange={handleChangePayment} />
 				<label htmlFor="dinheiro">
 					<span>
 						<Money size={16} />
