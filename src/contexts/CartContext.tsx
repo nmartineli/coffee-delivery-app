@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useReducer, useState } from 'react';
 import { CartProduct, cartReducer } from '../reducers/cart/reducers';
-import { addToCart, updateCart } from '../reducers/cart/actions';
+import { addToCart, removeFromCart, updateCart } from '../reducers/cart/actions';
 import { IDrink } from '../hooks/useFetchProducts';
 import { getAddress } from '../services/getCep';
 import { useNavigate } from 'react-router-dom';
@@ -16,6 +16,7 @@ interface CartContextType {
 	updateProductQuantity: (cartProduct: CartProduct, productCartIndex: number) => void;
 	handleAddToCart: (event: React.FormEvent<HTMLFormElement>, productAddedToCart: CartProductProps) => void;
 	handleGetAddress: (cep: string) => void;
+	handleRemoveFromCart: (event: React.FormEvent<HTMLFormElement>, productToRemove: CartProductProps) => void;
 	setPayment: (payment: string) => void;
 	setAddress: (address: IAddress) => void;
 	getOrder: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -154,6 +155,16 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 		addProductToCart(productAddedToCart);
 	};
 
+	const removeProductFromCart = (productCartIndex: number) => {
+		dispatch(removeFromCart(productCartIndex));
+	};
+
+	const handleRemoveFromCart = (event: React.FormEvent<HTMLFormElement>, productToRemove: CartProductProps) => {
+		event.preventDefault();
+		const productCartIndex = findProductIndexInCart(productToRemove);
+		removeProductFromCart(productCartIndex);
+	};
+
 	const checkOrderForErrors = () => {
 		if (addressAPI.cep === '' || addressError) {
 			setAddressError(true);
@@ -196,6 +207,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 				updateProductQuantity,
 				handleAddToCart,
 				handleGetAddress,
+				handleRemoveFromCart,
 				setAddress,
 				addressAPI,
 				addressError,

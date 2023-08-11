@@ -18,13 +18,9 @@ interface ICheckoutProductCard {
 }
 
 export function CheckoutProductCard(props: ICheckoutProductCard) {
-	const { handleAddToCart } = useContext(CartContext);
+	const { handleAddToCart, handleRemoveFromCart } = useContext(CartContext);
 	const { product } = props;
 	const [number, setNumber] = useState(product.quantity);
-
-	const handleRemoveProduct = () => {
-		console.log(product.id);
-	};
 
 	const productAddedToCart = {
 		...product,
@@ -49,7 +45,7 @@ export function CheckoutProductCard(props: ICheckoutProductCard) {
 							ATUALIZAR
 						</ProductCartButton>
 					</form>
-					<ProductCartButton type="button" onClick={handleRemoveProduct}>
+					<ProductCartButton type="button" onClick={() => handleRemoveFromCart(event, product)}>
 						<span>
 							<Trash size={16} />
 						</span>

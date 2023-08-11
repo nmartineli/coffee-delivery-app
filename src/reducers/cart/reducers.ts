@@ -25,7 +25,7 @@ export function cartReducer(state: CartState, action: any) {
 			});
 		case ActionTypes.REMOVE_FROM_CART:
 			return produce(state, (draft) => {
-				return state;
+				draft.cart.splice(action.payload.productIndex, 1);
 			});
 		default:
 			return state;

@@ -25,11 +25,11 @@ export function updateCart(product: CartProduct, productCartIndex: number) {
 	};
 }
 
-export function removeFromCart(product: CartProduct) {
+export function removeFromCart(productIndex: number) {
 	return {
 		type: ActionTypes.REMOVE_FROM_CART,
 		payload: {
-			product,
+			productIndex,
 		},
 	};
 }
